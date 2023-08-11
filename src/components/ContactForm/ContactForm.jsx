@@ -7,14 +7,14 @@ import { getContacts } from 'redux/selectors';
 
 const schema = Yup.object().shape({
   name: Yup.string()
-    .required('Name required')
+    .required('Name is required')
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       'Invalid name'
     ),
   number: Yup.string()
     .length(9)
-    .required('Number required')
+    .required('Phone number is required')
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d/,
       'Invalid number'
@@ -53,7 +53,7 @@ export const ContactForm = () => {
                     <ErrorMessage component={Error} name="name" />
 
                     <Label htmlFor='number'>Number</Label>
-                    <Input type="tel" name="number" placeholder="787-78-78" />
+                    <Input type="tel" name="number" placeholder="787-78-78" maxlength="9" />
                     <ErrorMessage component={Error} name="number"/>
                     <Button type="submit">Add contact</Button>
                 </FormStyled>
